@@ -1,13 +1,32 @@
 ﻿using System.Runtime.CompilerServices;
-
-internal class testit
+using System;
+public class laskin
 {
-    static void Main(string[] args)
+
+    public static int miinuslasku(int luku1, int luku2)
     {
+        return luku1 - luku2;
 
     }
+    
 
 
+
+
+}
+public class laskintestit
+{
+    public bool miinuslaskutesti(int a, int b,int tulos) 
+    {
+        if (laskin.miinuslasku(a, b) != tulos)
+        {
+            return false;
+        }
+        else 
+        { return true; }
+
+    }
+    
 
 
 }
