@@ -1,32 +1,32 @@
 ﻿using System.Runtime.CompilerServices;
 using System;
-public class laskin
+using System.Security.Cryptography.X509Certificates;
+using System.Runtime.InteropServices;
+
+namespace Testaus;
+
+public static class Laskin
 {
-
-    public static int miinuslasku(int luku1, int luku2)
+    public static void Main(string[] args)
     {
-        return luku1 - luku2;
-
+        
     }
-    
-
-
-
-
-}
-public class laskintestit
-{
-    public bool miinuslaskutesti(int a, int b,int tulos) 
+    public static int MiinusLasku(int luku1, int luku2)
+    {   
+        int tulos = luku1 - luku2;
+        return tulos;
+    }
+    public static int Potenssi(int luku3)
     {
-        if (laskin.miinuslasku(a, b) != tulos)
+        int tulos1 = luku3 * luku3;
+        if (tulos1 > 100)
         {
-            return false;
+            throw new ArgumentException("Luku ei saa olla suurempi kuin 100.");
         }
-        else 
-        { return true; }
-
+        return tulos1;
+            
+        
     }
-    
-
+   
 
 }
