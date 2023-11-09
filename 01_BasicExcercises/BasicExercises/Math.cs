@@ -16,17 +16,20 @@ public static class Laskin
         int tulos = luku1 - luku2;
         return tulos;
     }
-    public static int Potenssi(int luku3)
+    public static int Potenssi(int luku)
     {
-        int tulos1 = luku3 * luku3;
-        if (tulos1 > 100)
+        int tulos = luku * luku;
+        if (tulos > 100)
         {
             throw new ArgumentException("Luku ei saa olla suurempi kuin 100.");
-        }
-        return tulos1;
             
-        
+        }
+        return tulos;
     }
-   
+   public static double NelioJuuri(int luku)
+   {
+        double tulos = Math.Sqrt(luku);
+        return tulos;
+   }
 
 }
