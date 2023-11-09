@@ -29,11 +29,9 @@ namespace Testaus
         [DataRow(5, 25)]
         [DataRow(3, 9)]
         [DataRow(4, 16)]
-        [ExpectedException(typeof(ArgumentException))]
+       
         public void Potenssi_Yhdell‰Kokonaisluvulla_PalauttaaPotenssin(int luku, int tulos)
         {   
-            
-            
             int OdotetuTulos = Laskin.Potenssi(luku);
             Assert.AreEqual(tulos, OdotetuTulos);
         }
@@ -41,8 +39,17 @@ namespace Testaus
         [DataRow (54, 7.3484692283495345)]
         public void Neliojuuri_KokonaisLuvulla_PalauttaaNelioJuuren(int luku, double tulos)
         {
-            double OdotettuTulos = Laskin.NelioJuuri(luku);
-            Assert.AreEqual(tulos, OdotettuTulos);
+            double odotettuTulos = Laskin.NelioJuuri(luku);
+            Assert.AreEqual(tulos, odotettuTulos);
+        }
+        [TestMethod]
+        [DataRow(1, 10)]
+        public void Lista_Pieninluku_EtsiiDesimaaliLuvun_PalauttaaListanPienimm‰nLuvun(List<double> lista, double tulos)
+        {
+            
+            double odotettuTulos = Laskin.Lista(lista);
+            Assert.AreEqual(odotettuTulos, tulos);
+
         }
 
     }

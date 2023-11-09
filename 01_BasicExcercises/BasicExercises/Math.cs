@@ -31,5 +31,10 @@ public static class Laskin
         double tulos = Math.Sqrt(luku);
         return tulos;
    }
+   public static double Lista(List<Double> lista)
+    {
+        double pieninArvo = lista.Min();
+        return pieninArvo;
+    }
 
 }
