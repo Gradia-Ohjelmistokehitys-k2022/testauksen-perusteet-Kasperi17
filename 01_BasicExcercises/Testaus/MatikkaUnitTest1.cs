@@ -49,6 +49,7 @@ namespace Testaus
             
             double odotettuTulos = Laskin.Lista(lista);
             Assert.AreEqual(odotettuTulos, tulos);
+            //pöö
 
         }
 
