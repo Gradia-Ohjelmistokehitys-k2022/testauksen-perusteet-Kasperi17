@@ -63,6 +63,7 @@ namespace Testaus
         public void Lista_LiukuLuku_EtsiiDesimaaliLuvut_PalauttaaListan_KeskiArvon(float[] lista, double tulos)
         {   
             float odotettuTulos = Laskin.Lista(lista.ToList());
+            Assert.AreEqual(odotettuTulos, tulos);
 
 
         }
