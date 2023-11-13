@@ -32,9 +32,18 @@ public static class Laskin
         return tulos;
    }
    public static double Lista(List<Double> lista)
-    {
+   {
         double pieninArvo = lista.Min();
         return pieninArvo;
-    }
+   }
+   public static double Lista(List<int> lista)
+   {
+       int suurinArvo = lista.Max();
+       return suurinArvo;
+   }
+   public static float Lista(List<float> lista)
+   {
 
+        return lista.Min();
+   }
 }

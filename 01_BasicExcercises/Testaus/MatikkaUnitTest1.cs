@@ -43,15 +43,16 @@ namespace Testaus
             Assert.AreEqual(tulos, odotettuTulos);
         }
         [TestMethod]
-        [DataRow(1, 10)]
-        public void Lista_Pieninluku_EtsiiDesimaaliLuvun_PalauttaaListanPienimmänLuvun(List<double> lista, double tulos)
+        [DataRow(new double[] { 1, 10, 5 }, 1)]
+        [DataRow(new double[] { 3.14, 2.718, 1.414 }, 1.414)]
+        public void Lista_Pieninluku_EtsiiDesimaaliLuvun_PalauttaaListanPienimmänLuvun(double[] lista, double odotettuTulos)
         {
-            
-            double odotettuTulos = Laskin.Lista(lista);
-            Assert.AreEqual(odotettuTulos, tulos);
-            //pöö
+
+            double todellinenTulos = Laskin.Lista(lista.ToList());
+            Assert.AreEqual(odotettuTulos, todellinenTulos); 
 
         }
+
 
     }
 }
