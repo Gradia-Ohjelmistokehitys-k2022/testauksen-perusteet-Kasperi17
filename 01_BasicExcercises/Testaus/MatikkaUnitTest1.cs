@@ -53,11 +53,23 @@ namespace Testaus
         }
         [TestMethod]
         [DataRow(new double[] { 3.14, 2.718, 1.414 }, 1.414)]
-        public void Lista_SuurinLuku_EtsiiDesimaaliLuvun_PalauttaaListanPienimmänLuvun(double[] lista, double tulos)
+        public void Lista_SuurinLuku_EtsiiDesimaaliLuvun_PalauttaaListanSuurimmanLuvun(double[] lista, double tulos)
         {
             double odotettuTulos = Laskin.Lista(lista.ToList());
             Assert.AreEqual(odotettuTulos, tulos);
         }
+        [TestMethod]
+        [DataRow(new float[] {1.714f }, 1.414f)]
+        public void Lista_LiukuLuku_EtsiiDesimaaliLuvut_PalauttaaListan_KeskiArvon(float[] lista, double tulos)
+        {   
+            float odotettuTulos = Laskin.Lista(lista.ToList());
+
+
+        }
+
+
+
+
 
 
 

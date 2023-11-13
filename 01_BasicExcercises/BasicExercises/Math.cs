@@ -43,7 +43,7 @@ public static class Laskin
    }
    public static float Lista(List<float> lista)
    {
-
-        return lista.Min();
+        float keskiarvo = lista.Average();
+        return keskiarvo;
    }
 }
