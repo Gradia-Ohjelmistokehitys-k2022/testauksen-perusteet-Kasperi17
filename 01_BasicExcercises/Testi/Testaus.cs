@@ -1,11 +1,12 @@
 using Microsoft.VisualStudio.TestPlatform.TestHost;
 using System.Reflection;
+using Testaus;
 
 
 
 
 
-namespace FileOperations
+namespace Testaus
 {
     [TestClass]
     public class UnitTest1
@@ -19,41 +20,35 @@ namespace FileOperations
             string winDir = "C:\\Windows";
             string path = "\\system.ini";
             //Act
-            systemConfig = File.ReadFile(systemConfig, winDir, path);
+            systemConfig = FileOperations.ReadFile(systemConfig, winDir, path);
             //Assert
             Assert.IsTrue(systemConfig.Count > 0);
 
 
         }
         [TestMethod]
-        public void ReadFile_ReturnsListOfSettings_IfFileIstEmpty()
+        public void ReadFile_If_FileNotFound_ThrowsException()
         {
             List<string> systemConfig = new List<string>();
-            string path = "C:\\testi";
-            string moi = "\\pekka.txt";
-            // Luo tyhjä tiedosto tai käytä olemassa olevaa tyhjää tiedostoa
-
-            // Act
-            systemConfig = File.ReadFile(systemConfig, moi, path);
-
-            // Assert
-            Assert.IsTrue(systemConfig.Count == 0);
-
+            string path = "C:\\Windows";
+            string moi = "\\daåkdapodkapdkja";
+            // Act and Assert
+            Assert.ThrowsException<FileNotFoundException>(() =>
+            {
+                systemConfig = FileOperations.ReadFile(new List<string>(), path, moi);
+            
+            });
 
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
+        [TestMethod]
+        public void PrintFile_o()
+        {   //arrange
+            List<string> systemConfig = new List<string> { "Kullervo", "milo", "anus.antti" };
+            //act
+            FileOperations.PrintFile(systemConfig);
+            //assert
+            Assert.IsTrue(systemConfig.Count > 0);
+        }
 
 
 

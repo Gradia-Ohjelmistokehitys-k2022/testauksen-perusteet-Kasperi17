@@ -1,8 +1,9 @@
 ﻿using System.Reflection;
 
-namespace FileOperations
+
+namespace Testaus
 {
-    public class File
+    public static class FileOperations
     {
 
         public static void Main(string[] args)
@@ -10,7 +11,7 @@ namespace FileOperations
             
         }
 
-        private static void PrintFile(List<string> systemConfig)
+        public static void PrintFile(List<string> systemConfig)
         {
             foreach (var item in systemConfig)
             {
