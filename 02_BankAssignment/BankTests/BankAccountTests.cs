@@ -1,4 +1,6 @@
 using BankAccountNS;
+using System.Runtime.CompilerServices;
+
 namespace BankTests
 {
     [TestClass]
@@ -11,7 +13,7 @@ namespace BankTests
             double beginningBalance = 11.99;
             double debitAmount = 4.55;
             double expected = 7.44;
-            BankAccount account = new BankAccount("Mr. Bryan Walton", beginningBalance);
+            BankAccount account = new BankAccount(beginningBalance);
 
             // Act
             account.Debit(debitAmount);
@@ -26,7 +28,7 @@ namespace BankTests
             // Arrange
             double beginningBalance = 11.99;
             double debitAmount = -1;
-            BankAccount account = new BankAccount("Mr. Milo", beginningBalance);
+            BankAccount account = new BankAccount(beginningBalance);
             try
             {
                 account.Debit(debitAmount);
@@ -47,7 +49,7 @@ namespace BankTests
             double beginningBalance = 20.55;
             double debitAmount = 30.99;
 
-            BankAccount account = new BankAccount("Kullervo haavisto", beginningBalance);
+            BankAccount account = new BankAccount(beginningBalance);
             try
             {
                 account.Debit(debitAmount);
@@ -60,6 +62,16 @@ namespace BankTests
                 
             }
             Assert.Fail("The expected exception was not thrown.");
+        }
+        [TestMethod]
+        public void RemoveBankAccount_RemovesAccount_FromList()
+        {
+           BankCustomer. = new List<BankCustomer>();
+           
+        
+
+
+
         }
     } 
 }
