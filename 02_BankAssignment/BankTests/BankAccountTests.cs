@@ -66,9 +66,15 @@ namespace BankTests
         [TestMethod]
         public void RemoveBankAccount_RemovesAccount_FromList()
         {
-           BankCustomer. = new List<BankCustomer>();
-           
-        
+            List<BankAccount> m_bankAccounts = new List<BankAccount>();
+
+            BankAccount account1 = new BankAccount(1);
+            BankAccount account2 = new BankAccount(2);
+            BankAccount account3 = new BankAccount(3);
+
+            BankAccount newAccount = new BankAccount();
+            m_bankAccounts.Add(newAccount);
+
 
 
 
