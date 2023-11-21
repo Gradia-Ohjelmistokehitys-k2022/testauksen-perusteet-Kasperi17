@@ -23,8 +23,8 @@ namespace TestingTodoListApp
         }
         public void AddItemToList(TodoTask item)
         {
-
             _todoItems.Add(item with { Id = _taskCounter++ });
+         
 
         }
 
@@ -40,5 +40,6 @@ namespace TestingTodoListApp
             var item = _todoItems.First(x => x.Id == id);
             RemoveItemFromList(item);
         }
+
     }
 }
