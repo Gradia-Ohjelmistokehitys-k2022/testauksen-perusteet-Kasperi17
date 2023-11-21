@@ -8,11 +8,12 @@ namespace BankAccountNS
     public class BankAccount
     {
         
-        private double m_balance;
+        public static double m_balance;
         public const string DebitAmountLessThanZeroMessage = "Debit amount is less than zero";
         public const string DebitAmountExceedsBalanceMessage = "Debit amount exceeds balance";
         public  int m_accountNumber { get;  set; }
         private int m_nextNumber = 1;
+
 
         
         public BankAccount() 
@@ -46,7 +47,7 @@ namespace BankAccountNS
             }
 
             m_balance -= amount;
-            
+            //lähtötili
         }
         
         public void Credit(double amount)
@@ -56,7 +57,19 @@ namespace BankAccountNS
                 throw new ArgumentOutOfRangeException("amount");
             }
 
-            m_balance-= amount;
+            m_balance += amount;
+            //kohdetili
+        }
+        public static void TransferMoney(BankAccount sourceAccount, BankAccount destinationAccount, double maara)
+        {
+            if (maara < m_balance)
+            {
+                throw new ArgumentException("You are broke");
+            }
+            sourceAccount.Debit(maara);
+            destinationAccount.Credit(maara);
+            
+
         }
 
         public static void Main()
@@ -65,6 +78,7 @@ namespace BankAccountNS
             ba.Credit(5.77);
             ba.Debit(11.22);
             Console.WriteLine("Current balance is ${0}", ba.Balance);
+            BankCustomer nimi = new BankCustomer("moi");
         }
     }
 }

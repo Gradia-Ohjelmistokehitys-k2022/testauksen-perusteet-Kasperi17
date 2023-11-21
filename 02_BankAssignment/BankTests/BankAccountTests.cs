@@ -1,4 +1,5 @@
 using BankAccountNS;
+using System.Linq;
 using System.Runtime.CompilerServices;
 
 namespace BankTests
@@ -65,19 +66,51 @@ namespace BankTests
         }
         [TestMethod]
         public void RemoveBankAccount_RemovesAccount_FromList()
-        {
-            List<BankAccount> m_bankAccounts = new List<BankAccount>();
+        {   
+              
+            // Arrange
+            BankCustomer customer = new BankCustomer("Mr milo");
+            customer.AddBankAccount();
+            int accountNumberToRemove = customer.GetBankAccounts()[0].m_accountNumber;
 
-            BankAccount account1 = new BankAccount(1);
-            BankAccount account2 = new BankAccount(2);
-            BankAccount account3 = new BankAccount(3);
+            // Act
+            customer.RemoveBankAccount(accountNumberToRemove);
 
-            BankAccount newAccount = new BankAccount();
-            m_bankAccounts.Add(newAccount);
-
-
+            // Assert
+            Assert.AreEqual(0, customer.GetBankAccounts().Count);
 
 
         }
+        [TestMethod]
+        public void AddBankAccount_AddAccount_ToList()
+        {   
+            //Arrange
+            BankCustomer customer = new BankCustomer("Jorma haavisto");
+
+            // Act
+            customer.AddBankAccount();
+
+            // Assert
+            Assert.AreEqual(1, customer.GetBankAccounts().Count);
+
+
+        }
+        [TestMethod]
+
+        public void TransferMoney_TransferMoneyTo()
+        {
+            //arrange
+            BankAccount sourceAccount = new BankAccount(100.0); 
+            BankAccount destinationAccount = new BankAccount(50.0);
+
+            // Act
+            BankAccount.TransferMoney(sourceAccount, destinationAccount, 25.0);
+
+            // Assert
+            Assert.AreEqual(75.0, sourceAccount.Balance, "SourceAccount 75.0");
+            Assert.AreEqual(75.0, destinationAccount.Balance, "DestinationAccount 75.0");
+        }
+
+        
     } 
 }

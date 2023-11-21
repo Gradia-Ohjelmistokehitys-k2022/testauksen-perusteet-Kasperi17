@@ -9,7 +9,7 @@ namespace BankAccountNS
 {
    public class BankCustomer
    {
-        private List<BankAccount> m_bankAccounts = new List<BankAccount>();
+        public List<BankAccount> m_bankAccounts = new List<BankAccount>();
         private readonly string m_customerName;
 
 
@@ -28,16 +28,21 @@ namespace BankAccountNS
 
             BankAccount newAccount = new BankAccount();
             m_bankAccounts.Add(newAccount);
+            
 
         }
         public void RemoveBankAccount(int accountNumber) 
         {
             m_bankAccounts.RemoveAll(account => account.m_accountNumber == accountNumber);
+            
+        }
+        public List<BankAccount> GetBankAccounts()
+        {
+            return m_bankAccounts;
         }
 
 
 
-
-   }
+    }
 
 }
