@@ -10,7 +10,7 @@ namespace TestingTodoListApp
     {
 
         private readonly List<TodoTask> _todoItems;
-        private int _taskCounter = 1;
+        public int _taskCounter = 1;
         public IEnumerable<TodoTask> All => _TodoItems; //https://learn.microsoft.com/en-us/dotnet/api/system.linq.enumerable.all?view=net-6.0
         public List<TodoTask> _TodoItems { get => _todoItems;}
        
