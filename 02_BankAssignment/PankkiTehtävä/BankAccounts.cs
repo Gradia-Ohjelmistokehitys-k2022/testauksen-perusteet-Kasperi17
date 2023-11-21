@@ -8,7 +8,7 @@ namespace BankAccountNS
     public class BankAccount
     {
         
-        public static double m_balance;
+        private double m_balance;
         public const string DebitAmountLessThanZeroMessage = "Debit amount is less than zero";
         public const string DebitAmountExceedsBalanceMessage = "Debit amount exceeds balance";
         public  int m_accountNumber { get;  set; }
@@ -62,9 +62,9 @@ namespace BankAccountNS
         }
         public static void TransferMoney(BankAccount sourceAccount, BankAccount destinationAccount, double maara)
         {
-            if (maara < m_balance)
+            if (maara > sourceAccount.Balance)
             {
-                throw new ArgumentException("You are broke");
+                throw new ArgumentException("Debit amount exceeds balance");
             }
             sourceAccount.Debit(maara);
             destinationAccount.Credit(maara);

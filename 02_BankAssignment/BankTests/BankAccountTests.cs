@@ -99,16 +99,16 @@ namespace BankTests
 
         public void TransferMoney_TransferMoneyTo()
         {
-            //arrange
-            BankAccount sourceAccount = new BankAccount(100.0); 
+            //Arrange
+            BankAccount sourceAccount = new BankAccount(100.0);
             BankAccount destinationAccount = new BankAccount(50.0);
 
             // Act
-            BankAccount.TransferMoney(sourceAccount, destinationAccount, 25.0);
+            BankAccount.TransferMoney(sourceAccount, destinationAccount, 50.0); 
 
             // Assert
-            Assert.AreEqual(75.0, sourceAccount.Balance, "SourceAccount 75.0");
-            Assert.AreEqual(75.0, destinationAccount.Balance, "DestinationAccount 75.0");
+            Assert.AreEqual(50.0, sourceAccount.Balance, "SourceAccount 50.0");
+            Assert.AreEqual(100.0, destinationAccount.Balance, "DestinationAccount 100.0");
         }
 
         
