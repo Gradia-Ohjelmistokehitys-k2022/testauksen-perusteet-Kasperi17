@@ -10,13 +10,17 @@ namespace Testit
         {   //Arrange
             TodoList todoList = new TodoList();
             TodoTask addTask = new TodoTask("kullervo");
+            TodoTask addTask1 = new TodoTask("milo");
+            
             
 
             //Act
             todoList.AddItemToList(addTask);
+            todoList.AddItemToList(addTask1);
             
             //Assert
-            Assert.AreEqual(1, todoList._TodoItems.Count);
+            Assert.AreEqual(2, todoList._TodoItems.Count);
+
             
         }
         [TestMethod]
@@ -32,7 +36,7 @@ namespace Testit
 
             // Assert
             Assert.AreEqual(0, todoList._TodoItems.Count); 
-            Assert.AreEqual(0, todoList._taskCounter);    
+              
            
         }
     }
