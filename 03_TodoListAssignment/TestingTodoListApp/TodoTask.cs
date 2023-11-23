@@ -10,7 +10,9 @@ namespace TestingTodoListApp
     public record TodoTask(string TaskDescription) // ota selvää recordin toiminnasta
     {
         public int Id { get; init; } //init makes property immutable which means you cannot change value with set afterwards.
-        public bool IsCompleted { get; init; }
+        public bool IsCompleted { get; set; }
+
+        public string TaskDescription { get; init; }
 
 
         public override string ToString()

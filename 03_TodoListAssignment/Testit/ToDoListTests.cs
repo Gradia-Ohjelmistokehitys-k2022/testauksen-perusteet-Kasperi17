@@ -36,8 +36,21 @@ namespace Testit
 
             // Assert
             Assert.AreEqual(0, todoList._TodoItems.Count); 
-              
            
+        }
+        [TestMethod]
+        public void CompleteItem()
+        {
+            TodoList todoList = new TodoList();
+            TodoTask task = new TodoTask("hakkaa Jorma");
+            todoList.AddItemToList(task);
+
+            // Act
+            todoList.CompleteItem(task.Id);
+
+            // Assert
+            TodoTask completedTask = todoList._TodoItems.FirstOrDefault(t => t.Id == task.Id);
+            Assert.IsNull(completedTask); 
         }
     }
 }
