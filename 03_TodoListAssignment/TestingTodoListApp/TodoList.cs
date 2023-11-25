@@ -37,7 +37,7 @@ namespace TestingTodoListApp
 
         public void CompleteItem(int id)
         {
-            // remove the item
+            
             var item = _todoItems.FirstOrDefault(x => x.Id == id);
             if (item != null)
             {

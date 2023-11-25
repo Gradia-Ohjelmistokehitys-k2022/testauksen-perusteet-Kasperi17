@@ -4,7 +4,7 @@
 namespace WareHouse
 {
 
-    public class WareHouse
+    public class WareHouseClass
     {
 
         private List<Stock> _stockOfItems;
@@ -20,7 +20,7 @@ namespace WareHouse
             _stockOfItems.Add(item3);
         }
 
-        public WareHouse()
+        public WareHouseClass()
         {
 
         }
@@ -53,11 +53,13 @@ namespace WareHouse
 
         public int StockCount(string itemName)
         {
-            var matches = _stockOfItems.Where(item => item.ItemName == itemName);
-            return matches.Count();
+            
+            return _stockOfItems.Where(item => item.ItemName == itemName).Sum(item => item.Quantity);
         }
 
     }
+
+    
 
 }
 

@@ -10,7 +10,7 @@ namespace WareHouse
         static void Main(string[] args)
         {
           
-            WareHouse wareHouse = new();
+            WareHouseClass wareHouse = new();
             wareHouse.WareHouseSimulator();
         }
     }
