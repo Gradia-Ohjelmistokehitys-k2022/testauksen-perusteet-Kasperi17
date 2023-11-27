@@ -29,6 +29,7 @@ namespace WareHouse
         {
             Stock stock = new(itemName, itemCount);
             _stockOfItems.Add(stock);
+           
         }
 
         public bool InStock(string itemName)
@@ -38,22 +39,28 @@ namespace WareHouse
 
         public void TakeFromStock(string itemName, int quantity)
         {
-            Stock? stock = null;
-            if (InStock(itemName))
-            {
+            Stock? stock = _stockOfItems.FirstOrDefault(item => item.ItemName == itemName && item.Quantity > 0);
 
-                stock = _stockOfItems.FirstOrDefault(item => item.Quantity > 0);
+            if (stock != null)
+            {
                 stock.Quantity -= quantity;
+
+                if (stock.Quantity < 0)
+                {
+                    
+                    throw new Exception("Negative stock quantity for " + itemName);
+                }
             }
             else
             {
-                throw new Exception("Oversold " + stock.ItemName);
+                throw new Exception("Oversold " + itemName);
             }
         }
 
         public int StockCount(string itemName)
         {
-            
+            //var matches = _stockOfItems.Where(item => item.ItemName == itemName);
+            //return matches.Count();
             return _stockOfItems.Where(item => item.ItemName == itemName).Sum(item => item.Quantity);
         }
 
