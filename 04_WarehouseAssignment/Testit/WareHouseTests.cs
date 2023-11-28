@@ -20,7 +20,7 @@ namespace Testit
             Assert.AreEqual(5, wareHouse.StockCount("Jacket"));
         }
         [TestMethod]
-        public void WareHouseSimulator()
+        public void WareHouseSimulator_Check_If_WareHouse_IsNull()
         {
             WareHouseClass wareHouse = new WareHouseClass();
 
@@ -84,17 +84,95 @@ namespace Testit
             Assert.IsNotNull(wareHouse);
         }
         [TestMethod]
-        public void InStock()
+        public void AddToStocks_IncreasesQuantity_WhenAddingSameItem()
+        {
+            // Arrange
+            WareHouseClass wareHouse = new WareHouseClass();
+            wareHouse.WareHouseSimulator();
+
+            // Act
+            wareHouse.AddToStocks("Hat", 3);  
+
+            // Assert
+            Assert.AreEqual(5, wareHouse.StockCount("Hat"));  
+        }
+        [TestMethod]
+        public void InStock_Checks_If_ItemIs_InStock()
         {
             // Arrange
             WareHouseClass wareHouse = new WareHouseClass();
             wareHouse.WareHouseSimulator();
             // Act
-            var moi = wareHouse.InStock("Hat");
+            var tavarat = wareHouse.InStock("Hat");
             // Assert
-            Assert.IsTrue(moi);
+            Assert.IsTrue(tavarat);
         }
         [TestMethod]
+        public void InStocks_Checks_IfTwoItems_CanBeAt_Stock()
+        {
+            // Arrange
+            WareHouseClass wareHouse = new WareHouseClass();
+            wareHouse.WareHouseSimulator();
+            // Act
+            var tavara1 = wareHouse.InStock("Hat");
+            var tavara2 = wareHouse.InStock("Jacket");
+            // Assert
+            Assert.IsTrue(tavara1);
+            Assert.IsTrue(tavara2);
+        }
+        [TestMethod]
+        public void Instock_FalseWhen_ItemIsNot_OnStock()
+        {
+            // Arrange
+            WareHouseClass wareHouse = new WareHouseClass();
+            wareHouse.WareHouseSimulator(); 
 
+            // Act
+            bool result = wareHouse.InStock("Gloves");  
+
+            // Assert
+            Assert.IsFalse(result, "Gloves are not in stock");
+
+        }
+        [TestMethod]
+        public void StockCount_IncreaseItemAmount_OfItems()
+        {
+            // Arrange
+            WareHouseClass wareHouse = new WareHouseClass();
+            wareHouse.WareHouseSimulator();  
+            wareHouse.AddToStocks("Hat", 5);
+
+            // Act
+            int count = wareHouse.StockCount("Hat");
+
+            // Assert
+            Assert.AreEqual(7, count, "Hats count should be 5");
+        }
+        [TestMethod]
+        public void StockCount_Item_Exist()
+        {
+            // Arrange
+            WareHouseClass wareHouse = new WareHouseClass();
+            wareHouse.WareHouseSimulator();  
+
+            // Act
+            int count = wareHouse.StockCount("Shoes");
+
+            // Assert
+            Assert.AreEqual(3, count, "Shoes count should be 3");
+        }
+        [TestMethod]
+        public void StockCount_Item_DoesNot_Exist()
+        {
+            // Arrange
+            WareHouseClass wareHouse = new WareHouseClass();
+            wareHouse.WareHouseSimulator(); 
+
+            // Act
+            int count = wareHouse.StockCount("Gloves");  
+
+            // Assert
+            Assert.AreEqual(0, count, "Gloves count should be 0");
+        }
     }
 }

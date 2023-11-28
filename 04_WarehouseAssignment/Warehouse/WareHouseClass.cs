@@ -27,9 +27,12 @@ namespace WareHouse
 
         public void AddToStocks(string itemName, int itemCount)
         {
-            Stock stock = new(itemName, itemCount);
-            _stockOfItems.Add(stock);
            
+            
+                Stock stock = new Stock(itemName, itemCount);
+                _stockOfItems.Add(stock);
+            
+
         }
 
         public bool InStock(string itemName)
