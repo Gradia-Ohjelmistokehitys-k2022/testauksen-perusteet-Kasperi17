@@ -120,20 +120,10 @@ namespace Testit
             // Assert
             TodoTask completedTask = todoList._TodoItems.FirstOrDefault(t => t.Id == task.Id);
             Assert.IsNull(completedTask); 
+            //Assert.IsNull(todoList);
         }
-        [TestMethod]
-        public void CompleteItem1()
-        {
-            TodoList todoList = new TodoList();
-            TodoTask task = new TodoTask("hakkaa Jorma");
-            todoList.AddItemToList(task);
-
-            // Act
-            todoList.CompleteItem(task.Id);
-
-            // Assert
-            Assert.IsNull(task.Id);
-        }
+        
+        
 
 
     }
